@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const isDevelopment = process.env.NODE_ENV === "development";
+const isVercel = process.env.VERCEL === "1";
+const distDir =
+  process.env.NEXT_DIST_DIR ||
+  (isDevelopment ? ".next-dev" : isVercel ? ".next" : ".next-build");
 const imageRemotePatterns = [];
 
 if (process.env.NEXT_PUBLIC_SUPABASE_URL) {
@@ -21,9 +25,9 @@ if (process.env.NEXT_PUBLIC_SUPABASE_URL) {
 
 const nextConfig = {
   // Keep dev and production artifacts isolated so local dev does not
-  // collide with builds or running `next start` processes.
-  distDir:
-    process.env.NEXT_DIST_DIR || (isDevelopment ? ".next-dev" : ".next-build"),
+  // collide with builds or running `next start` processes. Vercel's
+  // Next.js builder expects the default production output directory.
+  distDir,
   images:
     imageRemotePatterns.length > 0
       ? {

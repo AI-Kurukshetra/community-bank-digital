@@ -1,0 +1,11 @@
+.next
+.next-dev
+.next-build
+node_modules
+.env
+.env.local
+.env*.local
+*.log
+*.out.log
+*.err.log
+*.pid

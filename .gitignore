@@ -3,6 +3,8 @@
 
 # next.js
 /.next
+/.next-dev
+/.next-build
 /.next-*
 /out
 
@@ -33,3 +35,4 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
